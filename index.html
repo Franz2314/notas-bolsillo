@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Notas UTP</title>
+  <meta name="theme-color" content="#FFCA28">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ============ VISTA: LISTA ============ -->
+  <main id="vista-lista" class="vista activa">
+    <header class="topbar">
+      <h1>Mis notas</h1>
+      <button id="btn-ajustes" class="icon-btn" aria-label="Ajustes">⚙️</button>
+    </header>
+    <div id="banner-cola" class="banner oculto">
+      <span id="banner-texto"></span>
+      <button id="btn-reintentar" class="mini-btn">Reintentar</button>
+    </div>
+    <section id="lista-notas" class="grid-notas"></section>
+    <p id="lista-vacia" class="vacio">Escribe tu primera nota ✏️</p>
+    <button id="fab-nueva" class="fab" aria-label="Nueva nota">+</button>
+  </main>
+
+  <!-- ============ VISTA: EDITOR ============ -->
+  <main id="vista-editor" class="vista">
+    <header class="topbar">
+      <button id="btn-volver" class="icon-btn" aria-label="Volver">←</button>
+      <h1>Nueva nota</h1>
+      <button id="btn-enviar" class="check-btn" aria-label="Enviar">✓</button>
+    </header>
+    <input id="inp-titulo" type="text" placeholder="Título (opcional)" autocomplete="off">
+    <textarea id="inp-texto" placeholder="Empieza a escribir… la IA elegirá el curso por ti"></textarea>
+    <div id="resultado-envio" class="oculto"></div>
+  </main>
+
+  <!-- ============ VISTA: AJUSTES ============ -->
+  <main id="vista-ajustes" class="vista">
+    <header class="topbar">
+      <button id="btn-volver-ajustes" class="icon-btn" aria-label="Volver">←</button>
+      <h1>Ajustes</h1>
+    </header>
+    <div class="ajustes-body">
+      <label for="inp-url">URL del backend (Apps Script /exec)</label>
+      <input id="inp-url" type="url" placeholder="https://script.google.com/macros/s/…/exec">
+      <button id="btn-probar" class="boton">Probar conexión</button>
+      <p id="estado-conexion"></p>
+      <hr>
+      <p class="ayuda">
+        La nota se clasifica con Gemini y se guarda en la carpeta del curso correcta en tu Drive.
+        Sin internet queda en cola y se envía al reconectar.
+      </p>
+      <button id="btn-borrar-historial" class="boton peligro">Borrar historial local</button>
+    </div>
+  </main>
+
+  <div id="toast" class="toast oculto"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
